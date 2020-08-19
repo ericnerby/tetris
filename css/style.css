@@ -1,11 +1,29 @@
-.container {
+main {
+  flex-direction: column;
+  align-items: center;
+}
+
+.container,
+.grid,
+.mini-grid,
+.game-header,
+main {
   display: flex;
 }
+
+.game-header {
+  flex-direction: row;
+  align-items: center;
+}
+
+.grid,
+.mini-grid {
+  flex-wrap: wrap;
+}
+
 .grid {
   width: 200px;
   height: 400px;
-  display: flex;
-  flex-wrap: wrap;
   background-color: #050609;
 }
 
@@ -24,7 +42,5 @@
   margin-left: 50px;
   width: 80px;
   height: 80px;
-  display: flex;
-  flex-wrap: wrap;
   background-color: #050609;
 }

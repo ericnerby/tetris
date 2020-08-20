@@ -14,22 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ------------------ EVENT LISTENERS --------------------------------- */
 
-  //assign functions to keyCodes
-  function control(e) {
-    if(activeGame) {
-      if(e.keyCode === 37) {
-        // moveLeft();
-      } else if (e.keyCode === 38) {
-        // rotate();
-      } else if (e.keyCode === 39) {
-        // moveRight();
-      } else if (e.keyCode === 40) {
-        // moveDown();
-      }
-    }
-  }
   //add listener to keys
-  document.addEventListener('keyup',control);
+  document.addEventListener('keyup',game.control);
 
   //add listener to play/pause button
   startBtn.addEventListener('click', game.startStop);

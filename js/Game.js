@@ -64,13 +64,13 @@ class Game {
   control(e) {
     if(this.active) {
       if(e.keyCode === 37) {
-        moveLeft();
+        // moveLeft();
       } else if (e.keyCode === 38) {
-        rotate();
+        // rotate();
       } else if (e.keyCode === 39) {
-        moveRight();
+        // moveRight();
       } else if (e.keyCode === 40) {
-        moveDown();
+        // moveDown();
       }
     }
   }

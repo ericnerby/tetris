@@ -1,14 +1,45 @@
 class Game {
-  constructor(board,preview) {
-    this.active = false;
+  constructor(grid,preview,scoreDisplay,) {
+    //DOM elements
+    this.grid = grid;
+    this.preview = preview;
+    this.scoreDisplay = scoreDisplay;
+
+    //constants
     this.width = 10;
     this.rows = 20;
-    this.board = board;
-    this.preview = preview;
+
+    //trackers
+    this.active = false;
+    this.cells = [];
+    this.prevCells = [];
+    this.timerId = null;
+    this.score = 0;
+    
+    //game elements
+    this.tetrominoes = this.initializeTetrominoes();
   }
 
   drawBoard() {
-    
+    //initialize cells for grid
+    for (let x = 0; x < this.width; x++) {
+      const newRow = [];
+      for (let y = 0; y < this.rows; y++) {
+        const newCell = document.createElement('div');
+        newCell.dataset.id = "${x}-${y}";
+        this.grid.appendChild(newCell);
+        newRow.push(newCell);
+      }
+      this.cells.push(newRow);
+    }
+    for (let i=0; i<10; i++) {
+      const div = document.createElement('div');
+      div.classList.add('taken');
+      this.grid.appendChild(div);
+    }
+    for (let i=0; i<16; i++) {
+      this.preview.appendChild(document.createElement('div'));
+    }
   }
 
   startStop() {
@@ -67,5 +98,25 @@ class Game {
         squares.forEach(cell => grid.appendChild(cell));
       }
     }
+  }
+
+  //freeze function
+  freeze() {
+    if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
+      current.forEach(index => squares[currentPosition + index].classList.add('taken'));
+      //start a new tetromino falling
+      random = nextRandom;
+      nextRandom = Math.floor(Math.random() * theTetrominoes.length);
+      current = theTetrominoes[random][currentRotation];
+      currentPosition = 4;
+      draw();
+      displayShape();
+      addScore();
+      gameOver();
+    }
+  }
+
+  initializeTetrominoes() {
+
   }
 }

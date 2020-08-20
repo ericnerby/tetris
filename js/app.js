@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const game = new Game(grid,miniGrid,scoreDisplay,startBtn,tetrominoList);
 
   // get game ready
-  let random = Math.floor(Math.random()*theTetrominoes.length);
+  game.newGame();
 
   /* ------------------ EVENT LISTENERS --------------------------------- */
 
@@ -18,13 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function control(e) {
     if(activeGame) {
       if(e.keyCode === 37) {
-        moveLeft();
+        // moveLeft();
       } else if (e.keyCode === 38) {
-        rotate();
+        // rotate();
       } else if (e.keyCode === 39) {
-        moveRight();
+        // moveRight();
       } else if (e.keyCode === 40) {
-        moveDown();
+        // moveDown();
       }
     }
   }

@@ -21,13 +21,17 @@ class Game {
     this.tetrominoes = this.initializeTetrominoes(tetrominoes);
   }
 
+  newGame() {
+    this.drawBoard();
+  }
+
   drawBoard() {
     //initialize cells for grid
-    for (let x = 0; x < this.width; x++) {
+    for (let y = 0; y < this.rows; y++) {
       const newRow = [];
-      for (let y = 0; y < this.rows; y++) {
+      for (let x = 0; x < this.width; x++) {
         const newCell = document.createElement('div');
-        newCell.dataset.id = "${x}-${y}";
+        newCell.dataset.id = `${x}-${y}`;
         this.grid.appendChild(newCell);
         newRow.push(newCell);
       }
@@ -120,8 +124,9 @@ class Game {
   initializeTetrominoes(tetrominoList) {
     let newTetrominoes = [];
     tetrominoList.map( tetromino => {
-      const newTetromino = new Tetromino( { color, shapes } = tetromino )
-      tetrominoes.push(newTetromino);
+      const { color, shapes } = tetromino;
+      const newTetromino = new Tetromino( color, shapes )
+      newTetrominoes.push(newTetromino);
     });
     return newTetrominoes;
   }

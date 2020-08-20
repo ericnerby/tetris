@@ -6,9 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid');
   const miniGrid = document.querySelector('.mini-grid');
   const scoreDisplay = document.querySelector('#score');
-  const game = new Game(grid,miniGrid,scoreDisplay);
-
   const startBtn = document.querySelector('#start-button');
+  const game = new Game(grid,miniGrid,scoreDisplay,startBtn,tetrominoList);
 
   // get game ready
   let random = Math.floor(Math.random()*theTetrominoes.length);

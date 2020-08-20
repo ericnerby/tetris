@@ -1,7 +1,7 @@
 class Tetromino {
   /**
    * @param {string} color  - a hexidecimal value for the color of the tetromino
-   * @param {array}  shapes - a two-dimensional array with the shapes for the tetromino
+   * @param {array}  shapes - a three-dimensional array with the shapes for the tetromino
    */
   constructor(color, shapes) {
     this.shapes = shapes;

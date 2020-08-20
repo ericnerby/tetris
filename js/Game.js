@@ -1,9 +1,10 @@
 class Game {
-  constructor(grid,preview,scoreDisplay,) {
+  constructor(grid,preview,scoreDisplay,startBtn,tetrominoes) {
     //DOM elements
     this.grid = grid;
     this.preview = preview;
     this.scoreDisplay = scoreDisplay;
+    this.startBtn = startBtn;
 
     //constants
     this.width = 10;
@@ -17,7 +18,7 @@ class Game {
     this.score = 0;
     
     //game elements
-    this.tetrominoes = this.initializeTetrominoes();
+    this.tetrominoes = this.initializeTetrominoes(tetrominoes);
   }
 
   drawBoard() {
@@ -116,7 +117,12 @@ class Game {
     }
   }
 
-  initializeTetrominoes() {
-
+  initializeTetrominoes(tetrominoList) {
+    let newTetrominoes = [];
+    tetrominoList.map( tetromino => {
+      const newTetromino = new Tetromino( { color, shapes } = tetromino )
+      tetrominoes.push(newTetromino);
+    });
+    return newTetrominoes;
   }
 }

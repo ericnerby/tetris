@@ -6,21 +6,21 @@ class Tetromino {
   constructor(color, shapes) {
     this.shapes = shapes;
     this.color = color;
-  }  
+  }
 
   //draw the Tetromino
-  draw(preview,position) {
+  draw(position, preview) {
     this.shapes.forEach(index => {
-      squares[currentPosition + index].classList.add('tetromino');
-      squares[currentPosition + index].style.backgroundColor = colors[random];
+      squares[position + index].classList.add('tetromino');
+      squares[position + index].style.backgroundColor = this.color;
     });
   }
 
   //undraw the Tetromino
-  undraw() {
+  undraw(preview, position) {
     this.shapes.forEach(index => {
-      squares[currentPosition + index].classList.remove('tetromino');
-      squares[currentPosition + index].style.backgroundColor = '';
+      squares[position + index].classList.remove('tetromino');
+      squares[position + index].style.backgroundColor = '';
     });
   }
 

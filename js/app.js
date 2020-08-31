@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------ EVENT LISTENERS --------------------------------- */
 
   //add listener to keys
-  document.addEventListener('keyup',game.control);
+  document.addEventListener('keyup', game.control);
 
   //add listener to play/pause button
   startBtn.addEventListener('click', game.startStop);

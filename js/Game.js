@@ -9,9 +9,10 @@ class Game {
     //constants
     this.width = 10;
     this.rows = 20;
+    this.startingPosition = [this.width / 2, 0];
 
     //trackers
-    this.active = false;
+    this.activeGame = false;
     this.cells = [];
     this.prevCells = [];
     this.timerId = null;
@@ -19,6 +20,8 @@ class Game {
     
     //game elements
     this.tetrominoes = this.initializeTetrominoes(tetrominoes);
+    this.currentTetromino = this.selectTetromino();
+    this.nextTetromino = this.selectTetromino();
   }
 
   newGame() {
@@ -51,18 +54,18 @@ class Game {
     if (timerId) {
       clearInterval(timerId);
       timerId = null;
-      this.active = false;
+      this.activeGame = false;
     } else {
-      draw();
-      timerId = setInterval(moveDown, 1000);
-      nextRandom = Math.floor(Math.random()*theTetrominoes.length);
+      this.currentTetromino.draw();
+      timerId = setInterval(this.currentTetromino.moveDown, 1000);
+      this.nextTetromino = this.selectTetromino();
       displayShape();
-      this.active = true;
+      this.activeGame = true;
     }
   }
 
   control(e) {
-    if(this.active) {
+    if(this.activeGame) {
       if(e.keyCode === 37) {
         // moveLeft();
       } else if (e.keyCode === 38) {
@@ -130,4 +133,10 @@ class Game {
     });
     return newTetrominoes;
   }
+
+  selectTetromino() {
+    const randomNumber = Math.floor(Math.random() * this.tetrominoes.length);
+    return this.tetrominoes[randomNumber];
+  }
+  
 }
